@@ -7,9 +7,10 @@
 /**
  * _execve - execute programm
  *@argv: parameter
+ *@envp: 2nd parameter
  * Return: (void).
  */
-void _execve(char **argv)
+void _execve(char **argv, char **envp)
 {
 	pid_t child_pid;
 	int status, retour;
@@ -21,7 +22,7 @@ void _execve(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		retour = execve(argv[0], argv, NULL);
+		retour = execve(argv[0], argv, envp);
 		if (retour == -1)
 		{
 			perror("./hsh");

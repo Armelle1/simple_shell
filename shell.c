@@ -7,10 +7,10 @@
 #include <stdlib.h>
 /**
  * shell - super simple shell
- *
+ *@envp : parameter
  * Return: Always 0.
  */
-int shell(void)
+int shell(char **envp)
 {
 	int i;
 	char *line, *value, *res;
@@ -33,7 +33,7 @@ int shell(void)
 			i++;
 		}
 		*(argv + i) = NULL;
-		_execve(argv);
+		_execve(argv, envp);
 	}
 	return (0);
 }

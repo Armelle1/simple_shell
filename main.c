@@ -6,11 +6,17 @@
 
 /**
  * main - test functions
- *
+ *@argc: 1st param
+ *@argv: 2nd param
+ *@envp: 3rd param
  * Return: Always 0.
  */
-int main(void)
+int main(int argc, char *argv[], char *envp[])
 {
-	shell();
+	if (argc < 1 || argv == NULL)
+	{
+		return (0);
+	}
+	shell(envp);
 	return (0);
 }
