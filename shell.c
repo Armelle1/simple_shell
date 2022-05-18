@@ -16,7 +16,7 @@ int shell(void)
 	int status, retour;
 	char *line;
 	char *argv[] = {NULL, NULL};
-
+	
 	while ((line = _getline()) != NULL)
 	{
 		line = strtok(line, "\n");
