@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include "main.h"
-
+#include <stdlib.h>
 /**
  * shell - super simple shell
  *
@@ -13,13 +13,25 @@
 int shell(void)
 {
 	pid_t child_pid;
-	int status, retour;
-	char *line;
-	char *argv[] = {NULL, NULL};
-	
+	int status, retour, i = 0;
+	char *line, *value;
+	char **argv = (char **) malloc(sizeof(char **));
+
+	if (argv == NULL)
+	{
+		return (0);
+	}
 	while ((line = _getline()) != NULL)
 	{
 		line = strtok(line, "\n");
+		line = line + '\0';
+		while ((value = strtok(NULL, " ")) != NULL)
+		{
+			*(argv + i) = value;
+			printf("%s", value);
+			i++;
+		}
+		*(argv + i) = NULL;
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -28,7 +40,6 @@ int shell(void)
 		}
 		if (child_pid == 0)
 		{
-			argv[0] = line + '\0';
 			retour = execve(argv[0], argv, NULL);
 			if (retour == -1)
 			{
