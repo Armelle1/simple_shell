@@ -6,11 +6,12 @@
 #include "main.h"
 /**
  * _execve - execute programm
- *@argv: parameter
- *@envp: 2nd parameter
+ * @arg: 1st parameter
+ *@argv: 2nd parameter
+ *@envp: 3rd parameter
  * Return: (void).
  */
-void _execve(char **argv, char **envp)
+void _execve(char **arg, char **argv, char **envp)
 {
 	pid_t child_pid;
 	int status, retour;
@@ -25,7 +26,7 @@ void _execve(char **argv, char **envp)
 		retour = execve(argv[0], argv, envp);
 		if (retour == -1)
 		{
-			perror("./hsh");
+			perror(arg[0]);
 		}
 	}
 	else

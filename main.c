@@ -17,6 +17,6 @@ int main(int argc, char *argv[], char *envp[])
 	{
 		return (0);
 	}
-	shell(envp);
+	shell(argv, envp);
 	return (0);
 }
