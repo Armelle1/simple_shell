@@ -14,7 +14,7 @@ char *_getline(void)
 	char *line = NULL;
 	ssize_t read;
 
-	printf("#cisfun$ ");
+	printf("$ ");
 	read = getline(&line, &size, stdin);
 	if (read < 0)
 	{
